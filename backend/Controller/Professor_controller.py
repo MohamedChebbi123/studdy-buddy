@@ -97,3 +97,50 @@ def view_profile(authorization: str | None = Header(None),db: Session = Depends(
         "profile_picture": user_profile.profile_picture
     }
     
+    
+def edit_profile(
+    first_name: str = Form(...),
+    last_name: str = Form(...),
+    phone_number: int = Form(...),
+    email: str = Form(...),
+    country: str = Form(...),
+    educational_field: str = Form(...),
+    description: str = Form(...),  
+    profile_picture: UploadFile = File(...),
+    db: Session = Depends(connect_databse),
+    authorization: str | None = Header(None)):
+    
+    
+    if not authorization:
+        raise HTTPException(status_code=401, detail="Authorization header missing")
+
+    if not authorization.startswith("Bearer "):
+        raise HTTPException(status_code=401, detail="Invalid authorization header")
+
+    token = authorization.split(" ")[1]
+    payload = verify_access_token(token)
+
+    if not payload or "sub" not in payload:
+        raise HTTPException(status_code=401, detail="Invalid or expired token")
+
+    professor_id = payload["sub"]
+    
+    
+    found_professor=db.query(Proffessor).filter(Proffessor.id==professor_id).first()
+    
+    image_url = upload_user_profile_image(profile_picture)
+    found_professor.first_name=first_name
+    found_professor.last_name=last_name
+    found_professor.phone_number=phone_number
+    found_professor.email=email
+    found_professor.country=country
+    found_professor.educational_field=educational_field
+    found_professor.description=description
+    found_professor.profile_picture=image_url
+    
+    db.commit()
+    db.refresh(found_professor)
+    
+    
+    return{"message":"use data has been modfied"}
+    

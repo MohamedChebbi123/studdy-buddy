@@ -1,4 +1,4 @@
-from Controller.Professor_controller import register_professor,login_professor,view_profile
+from Controller.Professor_controller import register_professor,login_professor,view_profile,edit_profile
 from Database.connection import connect_databse
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, File, Form, Header, UploadFile
@@ -37,3 +37,28 @@ def login_as_professor(payload:professor_login,db:Session=Depends(connect_databs
 @router.post("/professor_profile")
 def view_profile_as_professor(authorization: str | None = Header(None),db: Session = Depends(connect_databse)):
     return view_profile(authorization,db)
+
+
+@router.put("/professor_edit_profile")
+def edit_profile_as_profile(first_name: str = Form(...),
+    last_name: str = Form(...),
+    phone_number: int = Form(...),
+    email: str = Form(...),
+    country: str = Form(...),
+    educational_field: str = Form(...),
+    description: str = Form(...),  
+    profile_picture: UploadFile = File(...),
+    db: Session = Depends(connect_databse),
+    authorization: str | None = Header(None)):
+    
+    return edit_profile(
+    first_name,
+    last_name,
+    phone_number,
+    email,
+    country,
+    educational_field,
+    description,  
+    profile_picture,
+    db,
+    authorization)

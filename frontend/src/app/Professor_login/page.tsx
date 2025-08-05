@@ -38,63 +38,74 @@ export default function LoginProfessor() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Professor Portal
-        </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
-          Sign in to access your dashboard
-        </p>
+        <div className="text-center mb-8">
+          <div className="bg-gradient-to-r from-violet-600 to-purple-600 p-4 rounded-2xl inline-block mb-6 shadow-lg">
+            <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-slate-800 to-blue-600 bg-clip-text text-transparent">
+            Professor Portal
+          </h2>
+          <p className="mt-3 text-slate-600 text-lg">
+            Sign in to access your dashboard
+          </p>
+        </div>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="bg-white/80 backdrop-blur-sm py-10 px-8 shadow-2xl rounded-3xl border border-white/20">
           {success ? (
-            <div className="rounded-md bg-green-50 p-4 mb-4">
-              <div className="flex">
+            <div className="rounded-2xl bg-gradient-to-r from-green-50 to-emerald-50 p-6 mb-6 border border-green-200/50">
+              <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <svg
-                    className="h-5 w-5 text-green-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <div className="bg-gradient-to-r from-green-500 to-emerald-600 p-2 rounded-xl">
+                    <svg
+                      className="h-6 w-6 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
                 </div>
-                <div className="ml-3">
-                  <p className="text-sm font-medium text-green-800">
+                <div className="ml-4">
+                  <p className="text-lg font-semibold text-green-800">
                     Login successful! Redirecting...
                   </p>
                 </div>
               </div>
             </div>
           ) : (
-            <form className="space-y-6" onSubmit={handleSubmit}>
+            <form className="space-y-8" onSubmit={handleSubmit}>
               {error && (
-                <div className="rounded-md bg-red-50 p-4">
-                  <div className="flex">
+                <div className="rounded-2xl bg-gradient-to-r from-red-50 to-pink-50 p-6 border border-red-200/50">
+                  <div className="flex items-center">
                     <div className="flex-shrink-0">
-                      <svg
-                        className="h-5 w-5 text-red-400"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
+                      <div className="bg-gradient-to-r from-red-500 to-pink-500 p-2 rounded-xl">
+                        <svg
+                          className="h-6 w-6 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </div>
                     </div>
-                    <div className="ml-3">
-                      <p className="text-sm font-medium text-red-800">{error}</p>
+                    <div className="ml-4">
+                      <p className="text-lg font-semibold text-red-800">{error}</p>
                     </div>
                   </div>
                 </div>
@@ -103,11 +114,16 @@ export default function LoginProfessor() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-bold text-slate-700 mb-3 uppercase tracking-wide"
                 >
                   Email address
                 </label>
-                <div className="mt-1">
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <svg className="h-5 w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                    </svg>
+                  </div>
                   <input
                     id="email"
                     name="email"
@@ -116,7 +132,8 @@ export default function LoginProfessor() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="appearance-none block w-full pl-12 pr-4 py-4 border-2 border-slate-200 rounded-xl shadow-sm placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 text-lg bg-white/70 backdrop-blur-sm"
+                    placeholder="professor@university.edu"
                   />
                 </div>
               </div>
@@ -124,11 +141,16 @@ export default function LoginProfessor() {
               <div>
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-bold text-slate-700 mb-3 uppercase tracking-wide"
                 >
                   Password
                 </label>
-                <div className="mt-1">
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <svg className="h-5 w-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                  </div>
                   <input
                     id="password"
                     name="password"
@@ -137,7 +159,8 @@ export default function LoginProfessor() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="appearance-none block w-full pl-12 pr-4 py-4 border-2 border-slate-200 rounded-xl shadow-sm placeholder-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-200 text-lg bg-white/70 backdrop-blur-sm"
+                    placeholder="••••••••"
                   />
                 </div>
               </div>
@@ -148,11 +171,11 @@ export default function LoginProfessor() {
                     id="remember-me"
                     name="remember-me"
                     type="checkbox"
-                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                    className="h-5 w-5 text-blue-600 focus:ring-blue-500 border-slate-300 rounded transition-colors duration-200"
                   />
                   <label
                     htmlFor="remember-me"
-                    className="ml-2 block text-sm text-gray-900"
+                    className="ml-3 block text-sm font-medium text-slate-700"
                   >
                     Remember me
                   </label>
@@ -161,7 +184,7 @@ export default function LoginProfessor() {
                 <div className="text-sm">
                   <a
                     href="#"
-                    className="font-medium text-indigo-600 hover:text-indigo-500"
+                    className="font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-200"
                   >
                     Forgot your password?
                   </a>
@@ -172,12 +195,12 @@ export default function LoginProfessor() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full flex justify-center items-center py-4 px-6 border border-transparent rounded-xl shadow-lg text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-4 focus:ring-blue-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:-translate-y-0.5"
                 >
                   {loading ? (
                     <>
                       <svg
-                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                        className="animate-spin -ml-1 mr-3 h-6 w-6 text-white"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -207,12 +230,12 @@ export default function LoginProfessor() {
           )}
         </div>
 
-        <div className="mt-6 text-center text-sm text-gray-600">
-          <p>
+        <div className="mt-8 text-center">
+          <p className="text-slate-600">
             Don't have an account?{" "}
             <a
               href="#"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
+              className="font-semibold text-blue-600 hover:text-blue-800 transition-colors duration-200"
             >
               Contact administrator
             </a>
