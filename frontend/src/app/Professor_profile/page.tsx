@@ -100,7 +100,6 @@ export default function ProfessorProfilePage() {
     try {
       const formData = new FormData();
       
-      // Append all editable fields
       if (editData.first_name) formData.append("first_name", editData.first_name);
       if (editData.last_name) formData.append("last_name", editData.last_name);
       if (editData.phone_number) formData.append("phone_number", editData.phone_number);

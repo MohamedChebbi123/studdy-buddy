@@ -1,5 +1,7 @@
 from Models.Proffessor import Proffessor
+from Models.Classes import Classes
 from Routes import professor_route
+from Routes import classes_route
 from fastapi import FastAPI
 from Database.connection import engine, Base
 from fastapi.middleware.cors import CORSMiddleware
@@ -16,3 +18,4 @@ app.add_middleware(
     allow_headers=["*"],
 )
 app.include_router(professor_route.router)
+app.include_router(classes_route.router)
