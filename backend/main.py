@@ -1,6 +1,8 @@
 from Models.Proffessor import Proffessor
 from Models.Classes import Classes
+from Models.Classroom_Content import ClassroomContent
 from Routes import professor_route
+from Routes import Classes_content_route
 from Routes import classes_route
 from fastapi import FastAPI
 from Database.connection import engine, Base
@@ -19,3 +21,4 @@ app.add_middleware(
 )
 app.include_router(professor_route.router)
 app.include_router(classes_route.router)
+app.include_router(Classes_content_route.router)

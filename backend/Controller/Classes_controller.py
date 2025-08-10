@@ -1,3 +1,4 @@
+from sqlalchemy import and_
 from Utils.Cloudinary_Uploader import upload_user_profile_image
 from fastapi import Depends, Form, HTTPException, Header
 from Utils.jwt_logic import verify_access_token
@@ -46,3 +47,79 @@ def create_classroom(
     db.commit()
     db.refresh(new_class)
     return {"message": "Classroom created successfully"}
+
+
+
+def view_your_classes(
+    authorization: str | None = Header(None), 
+    db: Session = Depends(connect_databse)
+):
+    if not authorization:
+        raise HTTPException(status_code=401, detail="Authorization header missing")
+
+    if not authorization.startswith("Bearer "):
+        raise HTTPException(status_code=401, detail="Invalid authorization header")
+
+    token = authorization.split(" ")[1]
+    payload = verify_access_token(token)
+
+    if not payload or "sub" not in payload:
+        raise HTTPException(status_code=401, detail="Invalid or expired token")
+
+    professor_id = payload["sub"]
+    found_classrooms = db.query(Classes).filter(Classes.professor_id == professor_id).all()
+
+    return [
+        {
+            "class_id":classroom.class_id,
+            "class_title": classroom.class_title,
+            "class_capacity": classroom.class_capacity,
+            "class_field": classroom.class_field,
+            "description": classroom.description,
+            "classroom_picture": classroom.classroom_picture,
+            "classroom_password": classroom.classroom_password,
+            "created_at": classroom.created_at
+        }
+        for classroom in found_classrooms
+    ]
+
+
+def view_class_by_id(
+    class_id: int,
+    authorization: str | None = Header(None),
+    db: Session = Depends(connect_databse)
+):
+    if not authorization:
+        raise HTTPException(status_code=401, detail="Authorization header missing")
+
+    if not authorization.startswith("Bearer "):
+        raise HTTPException(status_code=401, detail="Invalid authorization header")
+
+    token = authorization.split(" ")[1]
+    payload = verify_access_token(token)
+
+    if not payload or "sub" not in payload:
+        raise HTTPException(status_code=401, detail="Invalid or expired token")
+
+    professor_id = payload["sub"]
+
+    found_class = db.query(Classes).filter(
+        and_(
+            Classes.professor_id == professor_id,
+            Classes.class_id == class_id
+        )
+    ).first()
+
+
+
+    return {
+        #"class_id":f
+        "class_title": found_class.class_title,
+        "class_capacity": found_class.class_capacity,
+        "class_field": found_class.class_field,
+        "description": found_class.description,
+        "classroom_picture": found_class.classroom_picture,
+        "classroom_password": found_class.classroom_password,
+        "created_at": found_class.created_at
+    }
+    

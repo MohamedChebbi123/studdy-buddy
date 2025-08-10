@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, FormEvent, ChangeEvent } from "react";
-
 type ProfessorFormState = {
   first_name: string;
   last_name: string;
@@ -125,6 +124,7 @@ export default function ProfessorRegistration() {
   };
 
   return (
+   
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex items-center justify-center p-4">
       <div className="w-full max-w-4xl bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
         {/* Header */}
@@ -376,5 +376,6 @@ export default function ProfessorRegistration() {
         </div>
       </div>
     </div>
+    
   );
 }

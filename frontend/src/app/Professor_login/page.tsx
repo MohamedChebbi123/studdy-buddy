@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-
+import { useRouter } from "next/navigation";
 export default function LoginProfessor() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-
+  const router = useRouter()
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -30,6 +30,7 @@ export default function LoginProfessor() {
 
       localStorage.setItem("token", data.token);
       setSuccess(true);
+      router.push("/Professor_profile")
     } catch (err: any) {
       setError(err.message);
     } finally {
