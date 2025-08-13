@@ -1,0 +1,31 @@
+services:
+    frontend:
+        build: ./frontend
+        ports: 
+            - 3000:3000
+        depends_on:
+            - backend
+
+    backend:
+        build: ./backend
+        ports: 
+            - 8000:8000
+        environment:
+            DATABASE_URL: postgresql://postgres:mohamed@database:5432/study_buddy
+        depends_on:
+            - database
+
+    database:
+        image: postgres:16
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_DB: study_buddy
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: mohamed
+        volumes:
+            - study_buddy:/var/lib/postgresql/data
+
+volumes:
+    study_buddy: 
+    

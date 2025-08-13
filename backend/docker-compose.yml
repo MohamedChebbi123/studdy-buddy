@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: study_buddy
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mohamed
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://postgres:mohamed@db:5432/study_buddy
+      CLOUDINARY_CLOUD_NAME: djxerkcjl
+      CLOUDINARY_API_KEY: 847431188774351
+      CLOUDINARY_API_SECRET: fKO6wPokFCV7KBz8ANNGfm73LYk
+      SECRET_KEY: titi_teta_titi_teta
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - .:/app
+
+volumes:
+  postgres_data:

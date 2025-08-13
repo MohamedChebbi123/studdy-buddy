@@ -1,0 +1,25 @@
+# FastAPI and related dependencies
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Database dependencies
+sqlalchemy
+psycopg2-binary
+
+# Authentication and security
+python-jose[cryptography]==3.3.0
+bcrypt==4.1.2
+
+# File upload and cloud storage
+cloudinary
+python-multipart
+
+# Data validation
+pydantic==2.5.0
+email-validator==2.1.0
+
+# Environment configuration
+python-dotenv==1.0.0
+
+# Standard library dependencies (already included in Python)
+# os, datetime, timedelta, timezone are built-in modules

@@ -1,16 +1,11 @@
-from fastapi import Depends, HTTPException, Header, UploadFile, File
-from Database.connection import connect_databse
-from Utils.File_Uploader import upload_your_files
-from sqlalchemy.orm import Session
-from Utils.jwt_logic import verify_access_token
-from Models.Classroom_Content import ClassroomContent
-
 from fastapi import Depends, HTTPException, Header, UploadFile, File, Form
 from Database.connection import connect_databse
 from Utils.File_Uploader import upload_your_files
 from sqlalchemy.orm import Session
 from Utils.jwt_logic import verify_access_token
 from Models.Classroom_Content import ClassroomContent
+
+
 
 def upload_pdf_in_classroom(
     classroom_id: str = Form(...),  # Get from form data

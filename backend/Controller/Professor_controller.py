@@ -1,5 +1,4 @@
 from fastapi import APIRouter, Depends, Form, File, Header, UploadFile, HTTPException,status
-from grpc import Status
 from sqlalchemy.orm import Session
 from Database.connection import connect_databse
 from Models.Proffessor import Proffessor
