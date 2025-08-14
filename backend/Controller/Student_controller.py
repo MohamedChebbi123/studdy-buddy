@@ -90,7 +90,52 @@ def view_profile(authorization: str | None = Header(None),db: Session = Depends(
         "descritpion": found_student.descritpion,
         "joined_at": found_student.joined_at
     }
+    
+    
+def edit_your_profile(first_name:str=Form(...),
+    last_name:str=Form(...),
+    email:str=Form(...),
+    phone_number:str=Form(...),
+    academic_level:str=Form(...),
+    profile_image: UploadFile = File(...),
+    country:str=Form(...),
+    descritpion:str=Form(...),
+    authorization: str | None = Header(None),
+    db:Session=Depends(connect_databse)):
+    
         
+    if not authorization:
+        raise HTTPException(status_code=401, detail="Authorization header missing")
 
+    if not authorization.startswith("Bearer "):
+        raise HTTPException(status_code=401, detail="Invalid authorization header")
+
+    token = authorization.split(" ")[1]
+    payload = verify_access_token(token)
+
+    if not payload or "sub" not in payload:
+        raise HTTPException(status_code=401, detail="Invalid or expired token")
+
+    student_id = payload["sub"]
+    
+    
+    found_student=db.query(Student).filter(Student.student_id==student_id).first()
+
+    image_url=upload_user_profile_image(profile_image)
+    
+    found_student.first_name=first_name
+    found_student.last_name=last_name
+    found_student.email=email
+    found_student.phone_number=phone_number
+    found_student.academic_level=academic_level
+    found_student.profile_image=image_url
+    found_student.country=country
+    found_student.descritpion=descritpion
+    
+    db.commit()
+    db.refresh(found_student)
+    
+    
+    return{"message":"user profile has been updated"}
 
 

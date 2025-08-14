@@ -5,7 +5,7 @@ from Database.connection import connect_databse
 from Schemas.student_schema import studentlogin
 from Utils.Cloudinary_Uploader import upload_user_profile_image
 from Utils.hash_password import hash_password
-from Controller.Student_controller import register_student,login_student,view_profile
+from Controller.Student_controller import register_student,login_student,view_profile,edit_your_profile
 
 
 router=APIRouter()
@@ -43,3 +43,28 @@ def login_as_student(payload:studentlogin,db:Session=Depends(connect_databse)):
 @router.get("/view_profile")
 def view_profile_as_student(authorization: str | None = Header(None),db: Session = Depends(connect_databse)):
     return view_profile(authorization,db)
+
+
+@router.put("/edit_your_profile")
+def edit_profile_as_as_student(first_name:str=Form(...),
+    last_name:str=Form(...),
+    email:str=Form(...),
+   
+    phone_number:str=Form(...),
+    academic_level:str=Form(...),
+    profile_image: UploadFile = File(...),
+    country:str=Form(...),
+    descritpion:str=Form(...),
+    authorization: str | None = Header(None),
+    db:Session=Depends(connect_databse)):
+    
+    return edit_your_profile(first_name,
+    last_name,
+    email,
+    phone_number,
+    academic_level,
+    profile_image,
+    country,
+    descritpion,
+    authorization,
+    db)
