@@ -18,6 +18,6 @@ class Classes(Base):
 
     professor = relationship("Proffessor", back_populates="classes")
     classroom_contents = relationship("ClassroomContent", back_populates="classroom", cascade="all, delete-orphan")
-
+    enrollements=relationship("Enrolled_classes",back_populates="classes",cascade="all, delete-orphan")
 
 

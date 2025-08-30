@@ -2,79 +2,114 @@
 
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { FiHome, FiUser, FiLogOut, FiBook, FiFileText, FiSearch, FiMenu, FiX } from "react-icons/fi";
+import { FaGraduationCap } from "react-icons/fa";
+import { useState } from "react";
 
 export default function NavBar() {
   const router = useRouter();
-
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value;
-    if (value) {
-      router.push(value);
-    }
-  };
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const logout = () => {
     localStorage.removeItem("token");
-    router.push("/Professor_login");
+    router.push("/Student_login");
   };
 
+
+
+
   return (
-    <nav className="bg-indigo-600 text-white shadow-lg">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex justify-between items-center py-3">
-          <div className="flex space-x-7">
-            <Link href="/" className="flex items-center">
-              <span className="font-semibold text-xl tracking-tight hover:text-indigo-200 transition-colors">
-                Professor Portal
-              </span>
+    <nav className="relative bg-gradient-to-r from-violet-600 via-blue-600 to-cyan-500 text-white shadow-2xl backdrop-blur-lg border-b border-white/20">
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-transparent pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-64 h-32 bg-white/5 rounded-full -translate-y-16 translate-x-32 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-48 h-24 bg-white/5 rounded-full translate-y-12 -translate-x-24 pointer-events-none"></div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center py-4">
+          {/* Logo/Brand */}
+          <div className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center group">
+              <div className="bg-white/20 backdrop-blur-sm p-3 rounded-xl border border-white/30 group-hover:bg-white/30 transition-all duration-300 shadow-lg">
+                <FaGraduationCap className="text-2xl text-white" />
+              </div>
+              <div className="ml-3">
+                <span className="font-bold text-2xl bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+                  StudyBuddy
+                </span>
+                <p className="text-xs text-blue-100 font-medium">Student Portal</p>
+              </div>
             </Link>
           </div>
           
-          <div className="hidden md:flex items-center space-x-6">
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-2">
             <Link 
               href="/" 
-              className="py-2 px-3 rounded hover:bg-indigo-500 transition-colors"
+              className="flex items-center px-4 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
+              <FiHome className="mr-2 text-lg" />
               Home
             </Link>
+            
             <Link 
-              href="/Professor_profile" 
-              className="py-2 px-3 rounded hover:bg-indigo-500 transition-colors"
+              href="/fetch_enrolled_classes" 
+              className="flex items-center px-4 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
-              View Your Profile
+              <FiBook className="mr-2 text-lg" />
+              My Classes
             </Link>
             
-            <div className="relative group">
-              <select 
-                onChange={handleSelectChange} 
-                defaultValue=""
-                className="bg-indigo-700 text-white py-2 px-4 rounded appearance-none hover:bg-indigo-800 transition-colors pr-8 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-400"
-              >
-                <option value="" disabled>Quick Actions</option>
-                <option value="/create_classroom">Create Classroom</option>
-                <option value="/Professor_classrooms">Manage Classes</option>
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
-                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
-                </svg>
-              </div>
-            </div>
+            <Link 
+              href="/classes_for_student" 
+              className="flex items-center px-4 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              <FiSearch className="mr-2 text-lg" />
+              Browse Classes
+            </Link>
 
-            {/* Logout Button - Desktop */}
+            <Link 
+              href="/pdfanalyzer" 
+              className="flex items-center px-4 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              <FiFileText className="mr-2 text-lg" />
+              PDF Analyzer
+            </Link>
+
+            <Link 
+              href="/student_profile" 
+              className="flex items-center px-4 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+            >
+              <FiUser className="mr-2 text-lg" />
+              Profile
+            </Link>
+            
             <button 
               onClick={logout}
-              className="py-2 px-4 rounded bg-red-500 hover:bg-red-600 transition-colors"
+              className="flex items-center px-4 py-2.5 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
+              <FiLogOut className="mr-2 text-lg" />
               Logout
             </button>
           </div>
-          
-          
+
+          {/* Mobile menu button */}
+          <div className="lg:hidden">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 backdrop-blur-sm border border-white/30 hover:bg-white/20 transition-all duration-200"
+            >
+              {isMobileMenuOpen ? (
+                <FiX className="text-xl text-white" />
+              ) : (
+                <FiMenu className="text-xl text-white" />
+              )}
+            </button>
+          </div>
         </div>
+
+        
       </div>
-      
-     
     </nav>
   );
 }

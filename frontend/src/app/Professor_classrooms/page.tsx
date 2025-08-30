@@ -19,13 +19,13 @@ export default function YourClasses() {
       if (!token) {
         setError("Authentication required. Please log in.");
         setLoading(false);
-        router.push("/login");
+        router.push("/Student_login");
         return;
       }
 
       try {
         const response = await fetch("http://localhost:8000/fetch_classes", {
-          method: "GET",
+          method: "POST",
           headers: {
             Authorization: `Bearer ${token}`,
           },

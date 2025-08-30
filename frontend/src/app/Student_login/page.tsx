@@ -178,31 +178,7 @@ export default function StudentLogin() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <input
-                    id="remember-me"
-                    name="remember-me"
-                    type="checkbox"
-                    className="h-5 w-5 text-emerald-600 focus:ring-emerald-500 border-slate-300 rounded transition-colors duration-200"
-                  />
-                  <label
-                    htmlFor="remember-me"
-                    className="ml-3 block text-sm font-medium text-slate-700"
-                  >
-                    Remember me
-                  </label>
-                </div>
-
-                <div className="text-sm">
-                  <a
-                    href="#"
-                    className="font-semibold text-emerald-600 hover:text-emerald-800 transition-colors duration-200"
-                  >
-                    Forgot your password?
-                  </a>
-                </div>
-              </div>
+              
 
               <div>
                 <button

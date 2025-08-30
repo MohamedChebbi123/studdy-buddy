@@ -32,6 +32,7 @@ export default function ViewProfile() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    console.log(token);
 
     if (!token) {
       setError("Authentication required. Please log in.");

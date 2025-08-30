@@ -8,6 +8,9 @@ from Routes import Student_route
 from fastapi import FastAPI
 from Database.connection import engine, Base
 from fastapi.middleware.cors import CORSMiddleware
+from Models import Enrolled_classes
+from Models import Pdfinventory
+from Routes import PDF_route
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -24,3 +27,5 @@ app.include_router(professor_route.router)
 app.include_router(classes_route.router)
 app.include_router(Classes_content_route.router)
 app.include_router(Student_route.router)
+app.include_router(PDF_route.router)
+
