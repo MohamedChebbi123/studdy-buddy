@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FiMail, FiPhone, FiMapPin, FiBook, FiCalendar, FiUser, FiEdit } from "react-icons/fi";
 import { FaGraduationCap } from "react-icons/fa";
-import NavBar from "@/components/NavBar";
+import Navbarprofessor from "@/components/Navbarprofessor";
 type ProfessorProfile = {
   first_name: string;
   last_name: string;
@@ -192,7 +192,7 @@ export default function ProfessorProfilePage() {
 
   return (
     <>
-    <NavBar/>
+    <Navbarprofessor/>
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-white/20 overflow-hidden">

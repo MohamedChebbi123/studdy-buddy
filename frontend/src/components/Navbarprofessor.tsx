@@ -2,11 +2,11 @@
 
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { FiHome, FiUser, FiLogOut, FiBook, FiFileText, FiSearch, FiMenu, FiX } from "react-icons/fi";
+import { FiHome,FiBook, FiFileText, FiSearch,FiLogOut} from "react-icons/fi";
 import { FaGraduationCap } from "react-icons/fa";
-import { useState } from "react";
 
-export default function NavBar() {
+
+export default function Navbarprofessor() {
   const router = useRouter();
   const logout = () => {
     localStorage.removeItem("token");
@@ -47,50 +47,41 @@ export default function NavBar() {
             </Link>
             
             <Link 
-              href="/fetch_enrolled_classes" 
+              href="/create_classroom" 
               className="flex items-center px-4 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               <FiBook className="mr-2 text-lg" />
-              My Classes
+              create classroom
             </Link>
             
             <Link 
-              href="/classes_for_student" 
+              href="/Professor_classrooms" 
               className="flex items-center px-4 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               <FiSearch className="mr-2 text-lg" />
-              Browse Classes
+              Browse your classes
             </Link>
 
             <Link 
-              href="/pdfanalyzer" 
+              href="/Professor_profile" 
               className="flex items-center px-4 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               <FiFileText className="mr-2 text-lg" />
-              PDF Analyzer
+              view your profile
             </Link>
 
-            <Link 
-              href="/student_profile" 
-              className="flex items-center px-4 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              <FiUser className="mr-2 text-lg" />
-              Profile
-            </Link>
-            
+
             <button 
-              onClick={logout}
-              className="flex items-center px-4 py-2.5 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              <FiLogOut className="mr-2 text-lg" />
-              Logout
-            </button>
+                          onClick={logout}
+                          className="flex items-center px-4 py-2.5 rounded-xl bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                        >
+                          <FiLogOut className="mr-2 text-lg" />
+                          Logout
+                        </button>
+
+
           </div>
-
-          
         </div>
-
-        
       </div>
     </nav>
   );

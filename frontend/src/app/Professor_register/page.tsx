@@ -369,7 +369,7 @@ export default function ProfessorRegistration() {
         <div className="bg-gradient-to-r from-slate-50 to-blue-50 px-10 py-6 border-t border-slate-200/50 text-center">
           <p className="text-slate-600 text-lg">
             Already have an account?{' '}
-            <a href="#" className="text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-200">
+            <a href="Professor_login" className="text-blue-600 hover:text-blue-800 font-semibold transition-colors duration-200">
               Sign in
             </a>
           </p>

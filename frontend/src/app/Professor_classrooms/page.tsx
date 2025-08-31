@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from 'next/link';
 import { FiBook, FiUsers, FiCalendar, FiPlus, FiEye } from "react-icons/fi";
 import { FaChalkboardTeacher, FaGraduationCap } from "react-icons/fa";
-import NavBar from "@/components/NavBar";
+import Navbarprofessor from "@/components/Navbarprofessor";
+
 export default function YourClasses() {
   const [classes, setClasses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -25,7 +26,7 @@ export default function YourClasses() {
 
       try {
         const response = await fetch("http://localhost:8000/fetch_classes", {
-          method: "POST",
+          method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -92,7 +93,7 @@ export default function YourClasses() {
 
   return (
     <>
-      <NavBar />
+      <Navbarprofessor />
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Header Section */}
@@ -245,21 +246,7 @@ export default function YourClasses() {
             </div>
           )}
 
-          {/* Quick Actions */}
-          {classes.length > 0 && (
-            <div className="mt-12 bg-white/60 backdrop-blur-sm rounded-3xl shadow-xl border border-white/20 p-8">
-              <h3 className="text-2xl font-bold text-slate-800 mb-6 text-center">Quick Actions</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Link
-                  href="/create_classroom"
-                  className="flex items-center justify-center p-6 bg-gradient-to-r from-violet-50 to-purple-50 rounded-2xl border-2 border-violet-200 hover:from-violet-100 hover:to-purple-100 hover:border-violet-300 transition-all duration-200 group"
-                >
-                  <FiPlus className="text-2xl text-violet-600 mr-3 group-hover:scale-110 transition-transform duration-200" />
-                  <span className="font-semibold text-violet-700">Create New Classroom</span>
-                </Link>
-              </div>
-            </div>
-          )}
+          
         </div>
       </div>
     </>
