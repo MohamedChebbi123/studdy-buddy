@@ -7,24 +7,22 @@ import Navbarprofessor from "@/components/Navbarprofessor";
 type ParamsType = Promise<{ id: string }>;
 
 export default function CourseContent({ params }: { params: ParamsType }) {
-  // ✅ unwrap params (Next.js 15+)
+  
+
   const { id } = use(params);
 
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [classData, setClassData] = useState<any>(null);
 
-  // Content list
   const [contents, setContents] = useState<any[]>([]);
 
-  // Modal state
   const [showModal, setShowModal] = useState(false);
   const [description, setDescription] = useState("");
   const [file, setFile] = useState<File | null>(null);
 
   const router = useRouter();
 
-  // Fetch class details
   useEffect(() => {
     const fetchClassById = async () => {
       const token = localStorage.getItem("token");
