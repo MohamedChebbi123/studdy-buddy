@@ -23,5 +23,7 @@ pypdf==3.17.1
 # Environment configuration
 python-dotenv==1.0.0
 
+openai==1.47.0
+
 # Standard library dependencies (already included in Python)
 # os, datetime, timedelta, timezone are built-in modules
