@@ -59,7 +59,6 @@ export default function CourseContent({ params }: { params: ParamsType }) {
     fetchClassById();
   }, [id, router]);
 
-  // Fetch classroom content
   const fetchClassroomContent = async () => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -87,12 +86,10 @@ export default function CourseContent({ params }: { params: ParamsType }) {
     }
   };
 
-  // Load contents when id changes
   useEffect(() => {
     fetchClassroomContent();
   }, [id]);
 
-  // Handle PDF upload
   const handleUpload = async () => {
     if (!file || !description) {
       alert("Please select a file and enter a description.");
