@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from fastapi import Depends, File, HTTPException, Header,UploadFile,status
+import httpx
 from openai import BaseModel, OpenAI
 from sqlalchemy.orm import Session
 from Database.connection import connect_databse
@@ -123,14 +124,12 @@ def chat_with_your_pdf(pdf_id: int, request: ChatRequest, authorization: str = H
     payload = verify_access_token(token)
     if not payload or "sub" not in payload:
         raise HTTPException(status_code=401, detail="Invalid or expired token")
-
     student_id = payload["sub"]
 
     single_pdf = db.query(Pdfinventory).filter(
         Pdfinventory.pdf_id == pdf_id,
         Pdfinventory.student_id == student_id
     ).first()
-
     if not single_pdf:
         raise HTTPException(status_code=404, detail="PDF not found for this student")
 
@@ -139,9 +138,12 @@ def chat_with_your_pdf(pdf_id: int, request: ChatRequest, authorization: str = H
     if not key:
         raise HTTPException(status_code=500, detail="OpenRouter API key not configured")
 
+   
+    http_client = httpx.Client()  
     client = OpenAI(
         api_key=key,
-        base_url="https://openrouter.ai/api/v1"
+        base_url="https://openrouter.ai/api/v1",
+        http_client=http_client
     )
 
     completion = client.chat.completions.create(
