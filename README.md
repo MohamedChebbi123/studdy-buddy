@@ -290,7 +290,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👥 Authors
 
-- **Development Team** - Initial work and ongoing maintenance
+- **l3arf** - mohamed chebbi 
 
 ## 🙏 Acknowledgments
 
@@ -300,10 +300,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Next.js team for the powerful React framework
 - PostgreSQL for robust database solutions
 
-## 📞 Support
 
-For support, please create an issue in the repository or contact the development team.
-
----
 
 **Study Buddy** - Empowering education through technology 🎓✨
