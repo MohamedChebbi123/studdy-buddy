@@ -2,6 +2,8 @@
 
 A comprehensive e-learning platform that connects students and professors, enabling seamless classroom management, PDF document analysis, and AI-powered learning assistance.
 
+**To view website:** [https://studdy-buddy-topaz.vercel.app/](https://studdy-buddy-topaz.vercel.app/)
+
 ## 🌟 Features
 
 ### For Students 🎓
