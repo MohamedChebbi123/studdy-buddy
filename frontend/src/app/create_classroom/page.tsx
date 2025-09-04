@@ -67,7 +67,7 @@ export default function CreateClassroom() {
         formDataToSend.append("classroom_picture", classroomPicture);
       }
 
-      const response = await fetch("http://localhost:8000/create_your_classroom", {
+      const response = await fetch("https://studdy-buddy-4.onrender.com/create_your_classroom", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

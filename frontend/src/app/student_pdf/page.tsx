@@ -30,7 +30,7 @@ export default function PdfList() {
 
     const fetchPdfs = async () => {
       try {
-        const response = await fetch("http://localhost:8000/fetch_your_pdfs", {
+        const response = await fetch("https://studdy-buddy-4.onrender.com/fetch_your_pdfs", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,

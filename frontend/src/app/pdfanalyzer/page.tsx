@@ -40,7 +40,7 @@ export default function PdfAnalyzer() {
     if (!token) return;
 
     try {
-      const res = await fetch("http://localhost:8000/get_student_pdfs", {
+      const res = await fetch("https://studdy-buddy-4.onrender.com/get_student_pdfs", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -120,7 +120,7 @@ export default function PdfAnalyzer() {
     formData.append("file", file);
 
     try {
-      const res = await fetch("http://localhost:8000/upload_student_pdf", {
+      const res = await fetch("https://studdy-buddy-4.onrender.com/upload_student_pdf", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

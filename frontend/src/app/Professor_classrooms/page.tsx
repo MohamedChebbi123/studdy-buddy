@@ -25,7 +25,7 @@ export default function YourClasses() {
       }
 
       try {
-        const response = await fetch("http://localhost:8000/fetch_classes", {
+        const response = await fetch("https://studdy-buddy-4.onrender.com/fetch_classes", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,

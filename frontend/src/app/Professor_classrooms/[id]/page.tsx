@@ -35,7 +35,7 @@ export default function CourseContent({ params }: { params: ParamsType }) {
       }
 
       try {
-        const response = await fetch(`http://localhost:8000/classes/${id}`, {
+        const response = await fetch(`https://studdy-buddy-4.onrender.com/classes/${id}`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -68,7 +68,7 @@ export default function CourseContent({ params }: { params: ParamsType }) {
     }
     try {
       const res = await fetch(
-        `http://localhost:8000/view_classroom_content_as_professor/${id}`,
+        `https://studdy-buddy-4.onrender.com/view_classroom_content_as_professor/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -108,7 +108,7 @@ export default function CourseContent({ params }: { params: ParamsType }) {
     formData.append("classroom_id", id);
 
     try {
-      const res = await fetch("http://localhost:8000/upload_your_pdf", {
+      const res = await fetch("https://studdy-buddy-4.onrender.com/upload_your_pdf", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -142,7 +142,7 @@ export default function CourseContent({ params }: { params: ParamsType }) {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/download_pdf/${id}/content/${contentId}`,
+        `https://studdy-buddy-4.onrender.com/${id}/content/${contentId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

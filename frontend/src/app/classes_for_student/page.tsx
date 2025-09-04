@@ -33,7 +33,7 @@ export default function StudentClasses() {
 
       try {
         const response = await fetch(
-          "http://localhost:8000/fetch_classrooms_for_students",
+          "https://studdy-buddy-4.onrender.com/fetch_classrooms_for_students",
           {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` },

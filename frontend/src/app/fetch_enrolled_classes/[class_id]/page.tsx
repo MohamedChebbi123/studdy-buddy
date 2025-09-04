@@ -44,7 +44,7 @@ export default function ClassDetailPage({ params }: { params: Promise<{ class_id
       }
 
       try {
-        const response = await fetch(`http://localhost:8000/enrolled_classes/${class_id}`, {
+        const response = await fetch(`https://studdy-buddy-4.onrender.com/enrolled_classes/${class_id}`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -78,7 +78,7 @@ export default function ClassDetailPage({ params }: { params: Promise<{ class_id
       }
 
       try {
-        const response = await fetch(`http://localhost:8000/classroom_content/${class_id}`, {
+        const response = await fetch(`https://studdy-buddy-4.onrender.com/classroom_content/${class_id}`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,

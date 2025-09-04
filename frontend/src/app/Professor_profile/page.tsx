@@ -39,7 +39,7 @@ export default function ProfessorProfilePage() {
       }
 
       try {
-        const response = await fetch("http://localhost:8000/professor_profile", {
+        const response = await fetch("https://studdy-buddy-4.onrender.com/professor_profile", {
           method: "POST",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -109,7 +109,7 @@ export default function ProfessorProfilePage() {
       if (editData.description) formData.append("description", editData.description);
       if (profileImage) formData.append("profile_picture", profileImage);
 
-      const response = await fetch("http://localhost:8000/professor_edit_profile", {
+      const response = await fetch("https://studdy-buddy-4.onrender.com/professor_edit_profile", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,

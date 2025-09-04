@@ -62,7 +62,7 @@ export default function PdfPage({ params }: { params: Promise<{ pdf_id: number }
     const fetchPdf = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/view_pdf_by_id/${resolvedParams.pdf_id}`,
+          `https://studdy-buddy-4.onrender.com/view_pdf_by_id/${resolvedParams.pdf_id}`,
           {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` },
@@ -116,7 +116,7 @@ export default function PdfPage({ params }: { params: Promise<{ pdf_id: number }
 
     try {
       const response = await fetch(
-        `http://localhost:8000/view_pdf_by_id/${resolvedParams.pdf_id}/chat`,
+        `https://studdy-buddy-4.onrender.com/view_pdf_by_id/${resolvedParams.pdf_id}/chat`,
         {
           method: "POST",
           headers: {

@@ -63,7 +63,7 @@ export default function StudentRegistration() {
             formDataToSend.append('country', formData.country)
             formDataToSend.append('descritpion', formData.descritpion) // match backend
 
-            const response = await fetch('http://localhost:8000/register_student', {
+            const response = await fetch('https://studdy-buddy-4.onrender.com/register_student', {
                 method: 'POST',
                 body: formDataToSend
             })

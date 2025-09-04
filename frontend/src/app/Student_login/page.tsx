@@ -18,7 +18,7 @@ export default function StudentLogin() {
     setSuccess(false);
 
     try {
-      const res = await fetch("http://localhost:8000/login_student", {
+      const res = await fetch("https://studdy-buddy-4.onrender.com/login_student", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -42,7 +42,7 @@ export default function ViewProfile() {
 
     const fetchProfile = async () => {
       try {
-        const response = await fetch("http://localhost:8000/view_profile", {
+        const response = await fetch("https://studdy-buddy-4.onrender.com/view_profile", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -139,7 +139,7 @@ export default function ViewProfile() {
         formData.append("profile_image", profileImage);
       }
 
-      const response = await fetch("http://localhost:8000/edit_your_profile", {
+      const response = await fetch("https://studdy-buddy-4.onrender.com/edit_your_profile", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,

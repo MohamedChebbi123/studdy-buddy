@@ -31,7 +31,7 @@ export default function EnrolledClasses() {
           return;
         }
 
-        const res = await fetch("http://localhost:8000/fetch_your_enrolled_classes", {
+        const res = await fetch("https://studdy-buddy-4.onrender.com/fetch_your_enrolled_classes", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
