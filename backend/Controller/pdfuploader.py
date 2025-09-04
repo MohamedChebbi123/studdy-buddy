@@ -136,9 +136,9 @@ def chat_with_your_pdf(pdf_id:int,request:ChatRequest,authorization: str = Heade
     
 
     client = OpenAI(
-        base_url="https://openrouter.ai/api/v1",
         api_key=key,
-    )
+        base_url="https://openrouter.ai/api/v1"
+)
 
     completion = client.chat.completions.create(
         extra_body={},
